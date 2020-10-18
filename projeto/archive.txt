@@ -1,18 +1,1 @@
-try {
-    numInter = 2;
-} catch(ae) {
-    numInter = 25;
-} finally {
-    numInter = 05;
-}
-
-function test() {
-    if(!isTest) {
-        for(j = 0; j < 5; j++) {
-            while(isTest) {
-                numInter = 74;
-            }
-        }
-    }
-    return true;
-}
+''

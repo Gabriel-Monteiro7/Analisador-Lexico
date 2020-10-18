@@ -143,7 +143,7 @@ public class FormIndex extends javax.swing.JFrame {
                         result += "Simbolo não definido\n";
                         break;
                     default:
-                        result +="[ " + lexer.lexeme + " ]: É um " + tokens + "\n";
+                        result +="['  " + lexer.lexeme + "  '] : É um " + tokens + "\n";
                         break;
 //                    default:
 //                        resultado += "Token: " + tokens + "\n";
