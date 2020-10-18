@@ -17,9 +17,13 @@ espaco=[ ,\t,\r,\n]+
 %%
 {espaco} {/*Ignore*/}
 
-(">" | "<" | ">=" | "<=" | "==" | "!=" | "!" | "&" | "|" | "&&" | "||" | "?" | "+" | "-" | "*" | "/" | "%" | "+=" | "-=" | "*=" | "/=" | ":" ) {lexeme = yytext(); return Operador;}
+( "/" | "%" | "+" | "-" | "*") {lexeme = yytext(); return Operador_Aritmético;}
 
-("=" ) {lexeme = yytext(); return Atribuição;}
+("&&" | "||" | "!" | "&" | "|" ) {lexeme = yytext(); return Operador_Lógico;}
+
+(">" | "<" | ">=" | "<=" | "==" | "!=") {lexeme = yytext(); return Operador_Relacional;}
+
+("=" | "-=" | "*=" | "+=" | "/=") {lexeme = yytext(); return Operador_Atribuição;}
 
 ( private | string | var | double | static | struct | union |abstract | if | else | switch | case | default | do | while | break | for |foreach | goto | null | int | float | byte | return | try | as | in | false | true | break | internal | continue | class | is | try | or | and | public | console.Write | console.WriteLine | catch | new ) {lexeme = yytext(); return Palavra_Reservada;}
 
@@ -33,7 +37,17 @@ espaco=[ ,\t,\r,\n]+
 
 "/*" [^*] ~"*/" | "/*" "*"+ "/" {lexeme = yytext(); return Comentario_Multilines;}
 
-("[" | "]" | "{" | "}" | "(" | ")" ) {lexeme = yytext(); return Separador;}
+("[") {lexeme = yytext(); return Colchete_Separador_Inicio;}
+
+("]") {lexeme = yytext(); return Colchete_Separador_Fim;}
+
+("{") {lexeme = yytext(); return Chave_Separador_Inicio;}
+
+("}") {lexeme = yytext(); return Chave_Separador_Fim;}
+
+("(") {lexeme = yytext(); return Parentese_Separador_Inicio;}
+
+(")") {lexeme = yytext(); return Parentese_Separador_Fim;}
 
 (\"[^\n,]*\" | \'[^\n,]*\') {lexeme = yytext(); return Constante_Literal;}
 
