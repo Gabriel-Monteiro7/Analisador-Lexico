@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codigo;
+package app;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,7 +38,7 @@ public class FormIndex extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAnalizar = new javax.swing.JButton();
+        btnAnalisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -48,14 +48,14 @@ public class FormIndex extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Analisador Léxico");
 
-        btnAnalizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnAnalizar.setText("Analizar");
-        btnAnalizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.darkGray, java.awt.Color.darkGray));
-        btnAnalizar.setBorderPainted(false);
-        btnAnalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
+        btnAnalisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAnalisar.setText("Analisar");
+        btnAnalisar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        btnAnalisar.setBorderPainted(false);
+        btnAnalisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAnalisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnalizarActionPerformed(evt);
+                btnAnalisarActionPerformed(evt);
             }
         });
 
@@ -87,7 +87,7 @@ public class FormIndex extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnalisar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -99,7 +99,7 @@ public class FormIndex extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAnalisar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -110,41 +110,40 @@ public class FormIndex extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getAccessibleContext().setAccessibleName("Analisador Léxico");
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
+    private void btnAnalisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalisarActionPerformed
         // TODO add your handling code here:
-        File archivo = new File("archivo.txt");
-        PrintWriter escribir;
+        File archive = new File("archive.txt");
+        PrintWriter write;
         try {
-            escribir = new PrintWriter(archivo);
-            escribir.print(txtEntrada.getText());
-            escribir.close();
+            write = new PrintWriter(archive);
+            write.print(txtEntrada.getText());
+            write.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FormIndex.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         try {
-            Reader lector = new BufferedReader(new FileReader("archivo.txt"));
-            Lexer lexer = new Lexer(lector);
-            String resultado = "";
+            Reader reader = new BufferedReader(new FileReader("archive.txt"));
+            Lexer lexer = new Lexer(reader);
+            String result = "";
             while (true) {
                 Tokens tokens = lexer.yylex();
                 if (tokens == null) {
-                    resultado += "FIM";
-                    txtResultado.setText(resultado);
+                    result += "FIM";
+                    txtResultado.setText(result);
                     return;
                 }
                 switch (tokens) {
                     case ERROR:
-                        resultado += "Simbolo não definido\n";
+                        result += "Simbolo não definido\n";
                         break;
                     default:
-                        resultado +="[ " + lexer.lexeme + " ]: É um " + tokens + "\n";
+                        result +="[ " + lexer.lexeme + " ]: É um " + tokens + "\n";
                         break;
 //                    default:
 //                        resultado += "Token: " + tokens + "\n";
@@ -156,7 +155,7 @@ public class FormIndex extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(FormIndex.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnAnalizarActionPerformed
+    }//GEN-LAST:event_btnAnalisarActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
 txtEntrada.setText("");txtResultado.setText("");    }//GEN-LAST:event_btnCleanActionPerformed
@@ -198,7 +197,7 @@ txtEntrada.setText("");txtResultado.setText("");    }//GEN-LAST:event_btnCleanAc
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAnalizar;
+    private javax.swing.JButton btnAnalisar;
     private javax.swing.JButton btnClean;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

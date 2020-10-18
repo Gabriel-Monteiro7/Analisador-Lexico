@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codigo;
+package app;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ import java.io.File;
  */
 public class Index {
     public static void main(String[] args) {
-        String route = "C:/Users/Gabri/Documents/AnalizadorLexico/src/codigo/Lexer.flex";
+        String route = "C:/Users/Gabri/Documents/GitHub/Analisador-Lexico/projeto/src/app/Lexer.flex";
         generarLexer(route);
     }
     public static void generarLexer(String route){
