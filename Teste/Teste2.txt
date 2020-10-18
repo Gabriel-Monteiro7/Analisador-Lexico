@@ -1,0 +1,19 @@
+for(j = 0; j < 5; j++) {
+    x = [1,2,3,4,5];
+}
+
+while(numFlo > numInter) {
+    xy = [[0],[1]];
+}
+
+do {
+    numFlo = 2;
+} while(numFlo < numInter);
+
+switch(numFlo) {
+    case 'a':
+        break;
+
+    default:
+        continue;
+}
