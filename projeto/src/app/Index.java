@@ -7,10 +7,6 @@ package app;
 
 import java.io.File;
 
-/**
- *
- * @author Charly Ponce
- */
 public class Index {
     public static void main(String[] args) {
         String route = "C:/Users/Gabri/Documents/GitHub/Analisador-Lexico/projeto/src/app/Lexer.flex";
