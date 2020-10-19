@@ -5,10 +5,6 @@
  */
 package app;
 
-/**
- *
- * @author Charly Ponce
- */
 public enum Tokens {
     Palavra_Reservada,
     Identificador,
